@@ -15,9 +15,13 @@ public class PlatformBehavior : MonoBehaviour
         customTransform.localPosition = startPosition;
         customRenderer.SetColor(new Color(0.6f, 0.4f, 0.2f));
 
+        // ADD THIS: Ensure BoxCollider2D exists
         BoxCollider2D col = GetComponent<BoxCollider2D>();
         if (col == null)
-            gameObject.AddComponent<BoxCollider2D>();
+        {
+            col = gameObject.AddComponent<BoxCollider2D>();
+            col.isTrigger = false; // IMPORTANT! Not a trigger!
+        }
     }
 
     void Update()

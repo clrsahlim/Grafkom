@@ -73,11 +73,18 @@ public class SceneSetup : MonoBehaviour
         GameObject platform = Instantiate(platformPrefab, position, Quaternion.identity);
         platform.transform.localScale = scale;
 
-        PlatformBehavior behavior = platform.GetComponent<PlatformBehavior>();
-        if (behavior != null)
+        // ADD THIS: Ensure collider exists!
+        BoxCollider2D collider = platform.GetComponent<BoxCollider2D>();
+        if (collider == null)
         {
-            // Set initial state if needed
+            collider = platform.AddComponent<BoxCollider2D>();
         }
+        collider.isTrigger = false; // CRITICAL!
+
+        // Set platform tag
+        platform.tag = "Platform";
+
+        PlatformBehavior behavior = platform.GetComponent<PlatformBehavior>();
     }
 
     void CreateCollectibles()

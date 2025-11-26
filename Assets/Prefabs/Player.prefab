@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 1631606784008237421}
   - component: {fileID: 8642557884671725978}
   - component: {fileID: 1381468731808241250}
-  - component: {fileID: 6004367537360619068}
+  - component: {fileID: 660389263708653712}
+  - component: {fileID: 1376411192501275642}
+  - component: {fileID: 5611978033339333111}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -107,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 5
   jumpForce: 8
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 1589230796632428723, guid: b97b2f28bee25bc4aa69b751d45c2e49, type: 3}
   projectileSpawnDistance: 1
   shootCooldown: 0.3
 --- !u!61 &1381468731808241250
@@ -140,7 +142,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -154,9 +156,38 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!50 &6004367537360619068
+--- !u!114 &660389263708653712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935469493167143160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a4def62f5000bf42ad535391fdd6a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomTransform
+  localPosition: {x: 0, y: 0}
+  localRotation: 0
+  localScale: {x: 1, y: 1}
+--- !u!114 &1376411192501275642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935469493167143160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb15fcc239ac05246a7ea6f9f123a5b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomRenderer
+  color: {r: 1, g: 1, b: 1, a: 1}
+  brightness: 1
+--- !u!50 &5611978033339333111
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -181,5 +212,5 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
