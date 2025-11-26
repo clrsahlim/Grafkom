@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: ee0347d3414d8bb46b0ccb8284cdbe0b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - groundPrefab: {instanceID: 0}
+  - wallPrefab: {instanceID: 0}
+  - playerPrefab: {instanceID: 0}
+  - platformPrefab: {instanceID: 0}
+  - collectiblePrefab: {instanceID: 0}
+  - decorationPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
