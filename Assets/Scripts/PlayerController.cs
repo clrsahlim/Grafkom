@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class PlayerController : MonoBehaviour
 {
     private CustomTransform customTransform;
@@ -34,8 +35,6 @@ public class PlayerController : MonoBehaviour
         customRenderer = GetComponent<CustomRenderer>();
         if (customRenderer == null)
             customRenderer = gameObject.AddComponent<CustomRenderer>();
-<<<<<<< Updated upstream
-=======
 
         // Add BoxCollider2D
         BoxCollider2D collider = GetComponent<BoxCollider2D>();
@@ -62,7 +61,6 @@ public class PlayerController : MonoBehaviour
         // Ensure tag is set
         if (!gameObject.CompareTag("Player"))
             gameObject.tag = "Player";
->>>>>>> Stashed changes
     }
 
     void Start()
@@ -103,14 +101,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-        // Jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            velocity.y = jumpForce;
-            isGrounded = false;
-            customRenderer.PulseBrightness(0.2f, 0.5f);
-=======
     void ApplyMovement()
     {
         // Horizontal movement using Rigidbody2D
@@ -139,7 +129,6 @@ public class PlayerController : MonoBehaviour
 
             // Debug visualization
             Debug.DrawRay(rayOrigin, Vector2.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
->>>>>>> Stashed changes
         }
     }
 
@@ -183,6 +172,7 @@ public class PlayerController : MonoBehaviour
             Color newColor = Random.ColorHSV();
             customRenderer.SetColor(newColor);
             playerColor = newColor;
+            Debug.Log("Color changed to: " + newColor);
         }
     }
 
@@ -204,23 +194,6 @@ public class PlayerController : MonoBehaviour
             projectile.Initialize(direction, spawnPosition, playerColor);
     }
 
-<<<<<<< Updated upstream
-    void ApplyPhysics()
-    {
-        if (customTransform == null) return;
-
-        // Gravity
-        velocity.y -= 20f * Time.deltaTime;
-        customTransform.Translate(new Vector2(0, velocity.y * Time.deltaTime));
-
-        // Ground check
-        if (customTransform.localPosition.y <= -3.5f)
-        {
-            customTransform.localPosition = new Vector2(customTransform.localPosition.x, -3.5f);
-            customTransform.UpdateMatrix();
-            velocity.y = 0;
-            isGrounded = true;
-=======
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Platform") || collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
@@ -254,7 +227,6 @@ public class PlayerController : MonoBehaviour
         {
             Gizmos.color = isGrounded ? Color.green : Color.red;
             Gizmos.DrawWireCube(transform.position, col.size);
->>>>>>> Stashed changes
         }
     }
 }
