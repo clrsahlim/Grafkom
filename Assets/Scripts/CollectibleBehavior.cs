@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+
 public class CollectibleBehavior : MonoBehaviour
 {
     private CustomTransform customTransform;
@@ -40,8 +41,18 @@ public class CollectibleBehavior : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            CoinManager.Instance.AddCoin(); 
-            Destroy(gameObject); 
+            // Check if CoinManager exists before using it
+            if (CoinManager.Instance != null)
+            {
+                CoinManager.Instance.AddCoin();
+            }
+            else
+            {
+                Debug.LogWarning("CoinManager.Instance is null!");
+            }
+
+            // Start the collection animation instead of destroying immediately
+            StartCoroutine(CollectAnimation());
         }
     }
 
@@ -57,16 +68,23 @@ public class CollectibleBehavior : MonoBehaviour
             float t = elapsed / duration;
 
             // Fade out
-            Color col = customRenderer.color;
-            col.a = Mathf.Lerp(1f, 0f, t);
-            customRenderer.SetColor(col);
+            if (customRenderer != null)
+            {
+                Color col = customRenderer.color;
+                col.a = Mathf.Lerp(1f, 0f, t);
+                customRenderer.SetColor(col);
+            }
 
             // Scale up
-            customTransform.localScale = startScale * (1f + t);
-            customTransform.UpdateMatrix();
+            if (customTransform != null)
+            {
+                customTransform.localScale = startScale * (1f + t);
+                customTransform.UpdateMatrix();
+            }
 
             yield return null;
         }
+
         Destroy(gameObject);
     }
 }
