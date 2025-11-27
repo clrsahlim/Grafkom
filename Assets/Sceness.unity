@@ -412,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneSetup
   groundPrefab: {fileID: 1743662861751731042, guid: 4e79e3cc74eafb748bfec7552e87ffd4, type: 3}
   wallPrefab: {fileID: 4416694960503702247, guid: d713d0fd15264ea418b2d0f0e9edc07a, type: 3}
-  playerPrefab: {fileID: 7935469493167143160, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
+  playerPrefab: {fileID: 5842008553958893095, guid: fc95f816216b340458894f51f4401892, type: 3}
   platformPrefab: {fileID: 216052325328175989, guid: f02d72213ce22544fbed22a848591b26, type: 3}
   collectiblePrefab: {fileID: 7491333765599785633, guid: 5bfdd147bcddcf24e80c7da9cfee088c, type: 3}
   decorationPrefab: {fileID: 1684586963620620979, guid: def47faa4eb300a46a4618394f92b82f, type: 3}
