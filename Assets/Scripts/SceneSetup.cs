@@ -3,12 +3,13 @@ using UnityEngine;
 public class SceneSetup : MonoBehaviour
 {
     [Header("Prefabs")]
-    public GameObject groundPrefab; 
+    public GameObject groundPrefab;
     public GameObject wallPrefab;
     public GameObject playerPrefab;
     public GameObject platformPrefab;
     public GameObject collectiblePrefab;
     public GameObject decorationPrefab;
+    public GameObject flagPrefab; // Bendera finish
 
     [Header("Settings")]
     public int decorationCount = 60;
@@ -21,31 +22,31 @@ public class SceneSetup : MonoBehaviour
         CreatePlatforms();
         CreateCollectibles();
         CreateDecorations();
+        CreateFlag(); // Tambahan
     }
 
     void CreateGround()
     {
         GameObject ground = Instantiate(groundPrefab, new Vector2(0, -5), Quaternion.identity);
-        ground.transform.localScale = new Vector3(30, 2, 1);
-        ground.AddComponent<BoxCollider2D>(); 
+        ground.AddComponent<BoxCollider2D>();
     }
 
     void CreateWalls()
     {
-        GameObject leftWall = Instantiate(wallPrefab, new Vector2(-15, 0), Quaternion.identity);
+        GameObject leftWall = Instantiate(wallPrefab, new Vector2(-22, 0), Quaternion.identity);
         leftWall.transform.localScale = new Vector3(1, 20, 1);
-        leftWall.AddComponent<BoxCollider2D>(); 
+        leftWall.AddComponent<BoxCollider2D>();
 
-        GameObject rightWall = Instantiate(wallPrefab, new Vector2(15, 0), Quaternion.identity);
+        GameObject rightWall = Instantiate(wallPrefab, new Vector2(60, 0), Quaternion.identity);
         rightWall.transform.localScale = new Vector3(1, 20, 1);
-        rightWall.AddComponent<BoxCollider2D>(); 
+        rightWall.AddComponent<BoxCollider2D>();
     }
 
     void CreatePlayer()
     {
         if (playerPrefab != null)
         {
-            GameObject player = Instantiate(playerPrefab, new Vector2(-8, 6), Quaternion.identity);
+            GameObject player = Instantiate(playerPrefab, new Vector2(-20, 6), Quaternion.identity);
             player.name = "Player";
         }
     }
@@ -54,18 +55,14 @@ public class SceneSetup : MonoBehaviour
     {
         if (platformPrefab == null) return;
 
-
-        // Platform pertama (tengah bawah)
-        CreatePlatform(new Vector2(-1.2f, -2.3f), new Vector2(3, 0.5f), true, false);
-
-        // Platform kedua (kiri)
-        CreatePlatform(new Vector2(-8, -1), new Vector2(7, 0.5f), false, true);
-
-        // Platform ketiga (tengah atas)
-        CreatePlatform(new Vector2(0.5f, 1), new Vector2(3, 0.5f), false, true);
-
-        // Platform keempat (kanan atas)
-        CreatePlatform(new Vector2(5, 3), new Vector2(3, 0.5f), true, true);
+        CreatePlatform(new Vector2(-13, -2.5f), new Vector2(3.8f, 0.5f), true, false);
+        CreatePlatform(new Vector2(-7.5f, 1.1f), new Vector2(3.8f, 0.5f), false, true);
+        CreatePlatform(new Vector2(-2f, -2.3f), new Vector2(3.8f, 0.5f), true, false);
+        CreatePlatform(new Vector2(3.5f, 0), new Vector2(3.8f, 0.5f), false, true);
+        CreatePlatform(new Vector2(9, -2), new Vector2(3.8f, 0.5f), false, true);
+        CreatePlatform(new Vector2(14.5f, 1.2f), new Vector2(3.8f, 0.5f), true, true);
+        CreatePlatform(new Vector2(20, -1.8f), new Vector2(3.8f, 0.5f), false, true);
+        CreatePlatform(new Vector2(25, 1.3f), new Vector2(3.8f, 0.5f), true, true);
     }
 
     void CreatePlatform(Vector2 position, Vector2 scale, bool moving, bool rotating)
@@ -86,13 +83,17 @@ public class SceneSetup : MonoBehaviour
 
         Vector2[] positions = new Vector2[]
         {
-            new Vector2(-6, 0),
-            new Vector2(-3, 2),
-            new Vector2(0, 4),
-            new Vector2(3, 2),
-            new Vector2(6, 0),
-            new Vector2(-4, -2),
-            new Vector2(4, -2)
+            new Vector2(-13, -1.5f),
+            new Vector2(-7.5f, 2.1f),
+            new Vector2(-2f, -1.3f),
+            new Vector2(3.5f, 1),
+            new Vector2(9, -1),
+            new Vector2(14.5f, 2.2f),
+            new Vector2(20, -0.8f),
+            new Vector2(25, 2.3f),
+            new Vector2(-7.5f, -3.1f),
+            new Vector2(3.5f, -3.1f),
+            new Vector2(14.5f, -3.1f),
         };
 
         foreach (Vector2 pos in positions)
@@ -108,40 +109,31 @@ public class SceneSetup : MonoBehaviour
 
         Color[] decorationColors = new Color[]
         {
-            new Color(1f, 0.5f, 0.5f),    // Pink
-            new Color(0.5f, 1f, 0.5f),    // Green
-            new Color(0.5f, 0.5f, 1f),    // Blue
-            new Color(1f, 1f, 0.5f),      // Yellow
-            new Color(1f, 0.5f, 1f),      // Magenta
-            new Color(0.5f, 1f, 1f)       // Cyan
+            new Color(1f, 0.5f, 0.5f),
+            new Color(0.5f, 1f, 0.5f),
+            new Color(0.5f, 0.5f, 1f),
+            new Color(1f, 1f, 0.5f),
+            new Color(1f, 0.5f, 1f),
+            new Color(0.5f, 1f, 1f)
         };
 
-        // === REQUIREMENT: Procedurally placed in large quantities ===
         for (int i = 0; i < decorationCount; i++)
         {
-            // Random position
             Vector2 randomPosition = new Vector2(
                 Random.Range(-12f, 12f),
                 Random.Range(-6f, 8f)
             );
 
-            // Random scale
             Vector2 randomScale = new Vector2(
                 Random.Range(0.1f, 0.4f),
                 Random.Range(0.1f, 0.4f)
             );
 
-            // Random color from palette
             Color randomColor = decorationColors[Random.Range(0, decorationColors.Length)];
-
-            // Random opacity
             float randomOpacity = Random.Range(0.2f, 0.5f);
-
-            // Random animation speeds
             float floatSpeed = Random.Range(0.3f, 1f);
             float rotationSpeed = Random.Range(-30f, 30f);
 
-            // Create decoration with all random properties
             CreateDecoration(randomPosition, randomScale, randomColor, randomOpacity, floatSpeed, rotationSpeed);
         }
     }
@@ -156,5 +148,23 @@ public class SceneSetup : MonoBehaviour
         {
             behavior.Initialize(position, scale, color, opacity, floatSpeed, rotationSpeed);
         }
+    }
+
+    void CreateFlag()
+    {
+        if (flagPrefab == null) return;
+
+        // Posisi bendera di ujung kanan scene
+        GameObject flag = Instantiate(flagPrefab, new Vector2(30, -2.5f), Quaternion.identity);
+        flag.transform.localScale = new Vector3(2f, 2f, 1f);
+        flag.name = "FinishFlag";
+
+        // Tambah trigger collider
+        BoxCollider2D collider = flag.GetComponent<BoxCollider2D>();
+        if (collider == null)
+        {
+            collider = flag.AddComponent<BoxCollider2D>();
+        }
+        collider.isTrigger = true;
     }
 }
