@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded;
     private Color playerColor = new Color(0.3f, 0.5f, 1f); // Biru
+    
+    // Animator
+    private Animator animator;
 
     void Awake()
     {
@@ -61,6 +64,13 @@ public class PlayerController : MonoBehaviour
         // Ensure tag is set
         if (!gameObject.CompareTag("Player"))
             gameObject.tag = "Player";
+
+        // Get Animator component
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning("No Animator component found on Player!");
+        }
     }
 
     void Start()
@@ -76,6 +86,7 @@ public class PlayerController : MonoBehaviour
         HandleShootInput();
         HandleRandomColor();
         CheckGrounded();
+        UpdateAnimator();
     }
 
     void FixedUpdate()
@@ -228,5 +239,31 @@ public class PlayerController : MonoBehaviour
             Gizmos.color = isGrounded ? Color.green : Color.red;
             Gizmos.DrawWireCube(transform.position, col.size);
         }
+    }
+
+    void UpdateAnimator()
+    {
+        if (animator == null) return;
+
+        // Get horizontal movement input
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        
+        // moveX: horizontal input value (-1, 0, or 1)
+        animator.SetFloat("moveX", horizontal);
+        
+        // moveY: vertical velocity from rigidbody
+        animator.SetFloat("moveY", rb.linearVelocity.y);
+        
+        // isRunning: true when moving horizontally
+        bool isRunning = Mathf.Abs(horizontal) > 0.1f;
+        animator.SetBool("isRunning", isRunning);
+        
+        // isJumping: true when in air and moving upward
+        bool isJumping = !isGrounded && rb.linearVelocity.y > 0.1f;
+        animator.SetBool("isJumping", isJumping);
+        
+        // Additional parameters for more control
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetFloat("verticalVelocity", rb.linearVelocity.y);
     }
 }
