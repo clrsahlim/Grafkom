@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1381468731808241250, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1381468731808241250, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -54,11 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1412486220985065065, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.56742
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1412486220985065065, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.76902
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1412486220985065065, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -109,6 +109,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 6004367537360619068, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004367537360619068, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
@@ -117,10 +121,19 @@ PrefabInstance:
       value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7935469493167143160, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935469493167143160, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8642557884671725978, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6004367537360619068, guid: c1fc9a10035a22941a63f7680c19ba4a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
