@@ -266,10 +266,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 14203059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e0f55e5934b1b74e9e934e4b69c6382, type: 3}
+  m_Script: {fileID: 11500000, guid: 398d14efec7a9d2419bd0274cd84a5eb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  player: {fileID: 3217997984069091510, guid: fc95f816216b340458894f51f4401892, type: 3}
+  m_EditorClassIdentifier: '::'
+  target: {fileID: 0}
+  playerTag: Player
+  playerName: Player Variant
+  findByTag: 1
+  offset: {x: 0, y: 0, z: -10}
+  smoothSpeed: 0.125
+  lockX: 0
+  lockY: 0
+  lockZ: 0
 --- !u!1 &121570936
 GameObject:
   m_ObjectHideFlags: 0
