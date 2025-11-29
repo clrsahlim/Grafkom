@@ -592,6 +592,7 @@ MonoBehaviour:
   collectiblePrefab: {fileID: 7491333765599785633, guid: 5bfdd147bcddcf24e80c7da9cfee088c, type: 3}
   decorationPrefab: {fileID: 1684586963620620979, guid: def47faa4eb300a46a4618394f92b82f, type: 3}
   flagPrefab: {fileID: 5026117937237464819, guid: ffc4738affc958645ac90fb3e592290d, type: 3}
+  monsterPrefab: {fileID: 4677381098904342884, guid: 354f44d6a37ca6a47aa10b9b4a06c647, type: 3}
   decorationCount: 60
 --- !u!4 &2127791759
 Transform:

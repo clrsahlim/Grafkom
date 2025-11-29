@@ -9,7 +9,8 @@ public class SceneSetup : MonoBehaviour
     public GameObject platformPrefab;
     public GameObject collectiblePrefab;
     public GameObject decorationPrefab;
-    public GameObject flagPrefab; // Bendera finish
+    public GameObject flagPrefab;
+    public GameObject monsterPrefab;
 
     [Header("Settings")]
     public int decorationCount = 60;
@@ -22,7 +23,8 @@ public class SceneSetup : MonoBehaviour
         CreatePlatforms();
         CreateCollectibles();
         CreateDecorations();
-        CreateFlag(); // Tambahan
+        CreateFlag();
+        CreateMonsterSpawner();
     }
 
     void CreateGround()
@@ -154,17 +156,33 @@ public class SceneSetup : MonoBehaviour
     {
         if (flagPrefab == null) return;
 
-        // Posisi bendera di ujung kanan scene
         GameObject flag = Instantiate(flagPrefab, new Vector2(30, -2.5f), Quaternion.identity);
         flag.transform.localScale = new Vector3(2f, 2f, 1f);
         flag.name = "FinishFlag";
 
-        // Tambah trigger collider
         BoxCollider2D collider = flag.GetComponent<BoxCollider2D>();
         if (collider == null)
         {
             collider = flag.AddComponent<BoxCollider2D>();
         }
         collider.isTrigger = true;
+    }
+
+    void CreateMonsterSpawner()
+    {
+        if (monsterPrefab == null)
+        {
+            Debug.LogWarning("[SCENE SETUP] Monster prefab not assigned!");
+            return;
+        }
+
+        GameObject spawnerObj = new GameObject("MonsterSpawner");
+        MonsterSpawner spawner = spawnerObj.AddComponent<MonsterSpawner>();
+        spawner.monsterPrefab = monsterPrefab;
+        spawner.spawnInterval = 2f;
+        spawner.spawnDistanceMin = 8f;
+        spawner.spawnDistanceMax = 12f;
+
+        Debug.Log("[SCENE SETUP] Monster spawner created!");
     }
 }
