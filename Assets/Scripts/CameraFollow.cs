@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
     public bool findByTag = true; // If true, uses tag; if false, uses name
 
     [Header("Follow Settings")]
-    public Vector3 offset = new Vector3(0f, 5f, -10f); // Camera position relative to player
+    public Vector3 offset = new Vector3(0f, 2f, -10f); // Camera position relative to player
     public float smoothSpeed = 0.125f; // How smoothly the camera follows (0-1)
 
     [Header("Optional Settings")]

@@ -35,13 +35,22 @@ public class SceneSetup : MonoBehaviour
 
     void CreateWalls()
     {
-        GameObject leftWall = Instantiate(wallPrefab, new Vector2(-22, 0), Quaternion.identity);
+        // Left Wall
+        GameObject leftWall = Instantiate(wallPrefab, new Vector2(-28, 0), Quaternion.identity);
         leftWall.transform.localScale = new Vector3(1, 20, 1);
-        leftWall.AddComponent<BoxCollider2D>();
+        leftWall.layer = LayerMask.NameToLayer("Ground");
+        leftWall.name = "LeftWall";
+        SpriteRenderer leftRenderer = leftWall.GetComponent<SpriteRenderer>();
+       
 
-        GameObject rightWall = Instantiate(wallPrefab, new Vector2(60, 0), Quaternion.identity);
+        // Right Wall
+        GameObject rightWall = Instantiate(wallPrefab, new Vector2(35, 0), Quaternion.identity);
         rightWall.transform.localScale = new Vector3(1, 20, 1);
-        rightWall.AddComponent<BoxCollider2D>();
+        BoxCollider2D rightCollider = rightWall.AddComponent<BoxCollider2D>();
+        rightCollider.size = new Vector2(1, 20);
+        rightWall.layer = LayerMask.NameToLayer("Ground"); 
+        rightWall.name = "RightWall";
+        SpriteRenderer rightRenderer = rightWall.GetComponent<SpriteRenderer>();
     }
 
     void CreatePlayer()
@@ -58,13 +67,13 @@ public class SceneSetup : MonoBehaviour
         if (platformPrefab == null) return;
 
         CreatePlatform(new Vector2(-13, -2.5f), new Vector2(3.8f, 0.5f), true, false);
-        CreatePlatform(new Vector2(-7.5f, 1.1f), new Vector2(3.8f, 0.5f), false, true);
-        CreatePlatform(new Vector2(-2f, -2.3f), new Vector2(3.8f, 0.5f), true, false);
+        CreatePlatform(new Vector2(-7.5f, 2.5f), new Vector2(3.8f, 0.5f), false, true);
+        CreatePlatform(new Vector2(-2f, -2.5f), new Vector2(3.8f, 0.5f), true, false);
         CreatePlatform(new Vector2(3.5f, 0), new Vector2(3.8f, 0.5f), false, true);
         CreatePlatform(new Vector2(9, -2), new Vector2(3.8f, 0.5f), false, true);
-        CreatePlatform(new Vector2(14.5f, 1.2f), new Vector2(3.8f, 0.5f), true, true);
+        CreatePlatform(new Vector2(14.5f, 2f), new Vector2(3.8f, 0.5f), true, true);
         CreatePlatform(new Vector2(20, -1.8f), new Vector2(3.8f, 0.5f), false, true);
-        CreatePlatform(new Vector2(25, 1.3f), new Vector2(3.8f, 0.5f), true, true);
+        CreatePlatform(new Vector2(25, 4f), new Vector2(3.8f, 0.5f), true, true);
     }
 
     void CreatePlatform(Vector2 position, Vector2 scale, bool moving, bool rotating)
@@ -86,13 +95,13 @@ public class SceneSetup : MonoBehaviour
         Vector2[] positions = new Vector2[]
         {
             new Vector2(-13, -1.5f),
-            new Vector2(-7.5f, 2.1f),
-            new Vector2(-2f, -1.3f),
+            new Vector2(-7.5f, 3.5f),
+            new Vector2(-2f, -1.5f),
             new Vector2(3.5f, 1),
             new Vector2(9, -1),
-            new Vector2(14.5f, 2.2f),
+            new Vector2(14.5f, 3f),
             new Vector2(20, -0.8f),
-            new Vector2(25, 2.3f),
+            new Vector2(25, 5f),
             new Vector2(-7.5f, -3.1f),
             new Vector2(3.5f, -3.1f),
             new Vector2(14.5f, -3.1f),
