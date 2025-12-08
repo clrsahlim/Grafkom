@@ -188,7 +188,7 @@ public class SceneSetup : MonoBehaviour
         GameObject spawnerObj = new GameObject("MonsterSpawner");
         MonsterSpawner spawner = spawnerObj.AddComponent<MonsterSpawner>();
         spawner.monsterPrefab = monsterPrefab;
-        spawner.spawnInterval = 2f;
+        spawner.spawnInterval = 8f;
         spawner.spawnDistanceMin = 8f;
         spawner.spawnDistanceMax = 12f;
 

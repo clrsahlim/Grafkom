@@ -176,11 +176,16 @@ public class MonsterBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Handle collision with player (optional - for damage system)
+        // Handle collision with player
         if (other.CompareTag("Player"))
         {
-            Debug.Log("[MONSTER] Touched player!");
-            // You can add damage logic here later
+            Debug.Log("[MONSTER] TOUCHED PLAYER!");
+
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.Die();
+            }
         }
     }
 }

@@ -5,9 +5,9 @@ public class MonsterSpawner : MonoBehaviour
 {
     [Header("Spawning Settings")]
     public GameObject monsterPrefab;
-    public float spawnInterval = 2f;
-    public float spawnDistanceMin = 8f;  // Minimum distance from player
-    public float spawnDistanceMax = 12f; // Maximum distance from player
+    public float spawnInterval = 8f;
+    public float spawnDistanceMin = 8f;
+    public float spawnDistanceMax = 12f;
 
     [Header("Spawn Area")]
     public float minX = -20f;
@@ -46,6 +46,12 @@ public class MonsterSpawner : MonoBehaviour
 
     void Update()
     {
+        // Stop spawning if game has ended
+        if (GameUIManager.GameEnded)
+        {
+            return;
+        }
+
         if (playerTransform == null)
         {
             // Try to find player again
