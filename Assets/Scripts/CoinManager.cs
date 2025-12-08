@@ -64,7 +64,7 @@ public class CoinManager : MonoBehaviour
     {
         if (coinText != null)
         {
-            coinText.text = $"Coins: {coinCount}/{totalCoins}";
+            coinText.text = $"{coinCount}/{totalCoins}";
             Debug.Log($"[COIN MANAGER] UI Updated: {coinText.text}");
         }
         else

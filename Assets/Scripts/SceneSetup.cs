@@ -131,7 +131,7 @@ public class SceneSetup : MonoBehaviour
         for (int i = 0; i < decorationCount; i++)
         {
             Vector2 randomPosition = new Vector2(
-                Random.Range(-12f, 12f),
+                Random.Range(-40f, 60f),
                 Random.Range(-6f, 8f)
             );
 
