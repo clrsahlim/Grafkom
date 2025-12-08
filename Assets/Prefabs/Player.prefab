@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2f3c38c651afad244907f0590b72027c, type: 2}
+  - {fileID: 2100000, guid: fb0aa65b7f18a5c449d46b794a0c0660, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 8
   gravity: -20
+  downSpeed: 2
   projectilePrefab: {fileID: 1589230796632428723, guid: b97b2f28bee25bc4aa69b751d45c2e49, type: 3}
   projectileSpawnDistance: 1
   shootCooldown: 0.3
